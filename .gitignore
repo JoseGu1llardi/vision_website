@@ -1,8 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# =====================================================
+# DEPENDENCIES
+# =====================================================
+node_modules/
+.pnp/
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,32 +10,84 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# =====================================================
+# NEXT.JS
+# =====================================================
+.next/
+out/
+build/
 
-# next.js
-/.next/
-/out/
+# =====================================================
+# ENVIRONMENT VARIABLES (SECURITY)
+# =====================================================
+.env
+.env.*
+!.env.example
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# =====================================================
+# LOGS
+# =====================================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# =====================================================
+# TESTING
+# =====================================================
+coverage/
+cypress/videos/
+cypress/screenshots/
 
-# vercel
-.vercel
+# =====================================================
+# CACHE / TEMP
+# =====================================================
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
-# typescript
+# =====================================================
+# OS FILES
+# =====================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =====================================================
+# BUILD OUTPUT
+# =====================================================
+dist/
+tmp/
+temp/
+
+# =====================================================
+# VERCEL
+# =====================================================
+.vercel/
+
+# =====================================================
+# TYPESCRIPT
+# =====================================================
 *.tsbuildinfo
 next-env.d.ts
+
+# =====================================================
+# SECURITY FILES
+# =====================================================
+*.pem
+*.key
+*.crt
+
+# =====================================================
+# MISC
+# =====================================================
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
