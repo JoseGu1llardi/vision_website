@@ -5,8 +5,11 @@ import { useState, useEffect } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { HeroSlider } from "./components/home/HeroSlider";
+import { GalleryCarousel } from "./components/home/GalleryCarousel";
 import { ContactSection } from "./components/home/ContactSection";
+
 import { heroImages } from "./data/heroImages.ts";
+import { galleryImages } from "./data/galleryImages.ts";
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,6 +24,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Header />
       <HeroSlider images={heroImages} scroll />
+      <GalleryCarousel images={galleryImages} />
       <ContactSection />
       <Footer />
     </div>
