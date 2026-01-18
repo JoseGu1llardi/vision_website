@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { HeroSlider } from "./components/home/HeroSlider";
+import { ContactSection } from "./components/home/ContactSection";
 import { heroImages } from "./data/heroImages.ts";
 
 export default function HomePage() {
@@ -20,6 +21,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Header />
       <HeroSlider images={heroImages} scroll />
+      <ContactSection />
       <Footer />
     </div>
   );
