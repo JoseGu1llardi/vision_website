@@ -11,7 +11,7 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-[100] bg-foreground/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
+      className="fixed inset-0 z-100 bg-foreground/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
     >
       <button
         onClick={onClose}
