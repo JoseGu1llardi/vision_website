@@ -9,6 +9,7 @@ import { GalleryCarousel } from "./components/home/GalleryCarousel";
 import { ContactSection } from "./components/home/ContactSection";
 import { ProjectsGrid } from "./components/home/ProjectsGrid";
 import { AboutSection } from "./components/home/AboutSection";
+import { FormSection } from "./components/home/FormSection";
 
 import { heroImages } from "./data/heroImages.ts";
 import { projects } from "./data/projects.ts";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <AboutSection />
       <ProjectsGrid projects={projects} />
       <GalleryCarousel images={galleryImages} />
+      <FormSection />
       <ContactSection />
       <Footer />
     </div>
