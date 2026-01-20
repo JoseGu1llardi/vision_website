@@ -10,7 +10,7 @@ export function AboutSection() {
           {/* Image Side */}
           <div className="relative max-w-md mx-auto md:mx-0">
             {/* Main Image */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-xl">
+            <div className="relative aspect-4/5 overflow-hidden rounded-lg shadow-xl">
               <Image
                 src="https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=1287&auto=format&fit=crop"
                 alt="Professional landscaping work"

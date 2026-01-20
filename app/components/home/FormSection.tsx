@@ -64,7 +64,7 @@ export function FormSection() {
             </p>
           </div>
 
-          <div className="bg-foreground/[0.02] rounded-lg p-10 md:p-12 border border-foreground/10">
+          <div className="bg-foreground/2 rounded-lg p-10 md:p-12 border border-foreground/10">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
                 <label className="text-foreground/70 font-medium md:w-48 shrink-0">
@@ -180,7 +180,7 @@ export function FormSection() {
         {showModal && (
           <div
             onClick={() => setShowModal(false)}
-            className="fixed inset-0 z-[100] bg-foreground/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
+            className="fixed inset-0 z-100 bg-foreground/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
           >
             <div
               onClick={(e) => e.stopPropagation()}

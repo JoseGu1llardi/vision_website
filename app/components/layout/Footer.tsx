@@ -4,18 +4,28 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-background py-8 px-4 border-t border-foreground/10">
       <div className="container mx-auto max-w-4xl">
         <div className="flex flex-col items-center gap-6 text-center">
           {/* Logo */}
-          <Image
-            src="/ar-logo.svg"
-            alt="AR Design Logo"
-            className="w-12 h-12 opacity-60"
-            width={100}
-            height={50}
-          />
+          <button
+            onClick={scrollToTop}
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Scroll to top"
+          >
+            <Image
+              src="/ar-logo.svg"
+              alt="AR Design Logo"
+              className="w-12 h-12 opacity-60"
+              width={100}
+              height={50}
+            />
+          </button>
 
           {/* Brand Name */}
           <div>
