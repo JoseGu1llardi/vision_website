@@ -91,6 +91,10 @@ export function Header() {
 }
 
 function DesktopHeader({ scrolled }: { scrolled: boolean }) {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const navLinks = [
     { href: "/", label: "HOME", active: true },
     { href: "/portfolio", label: "PORTFOLIO" },
@@ -113,6 +117,7 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
             width={100}
             height={50}
           />
+
           <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-1">
             VISION LANDSCAPE
           </h1>
@@ -132,13 +137,19 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
         }`}
       >
         <div className="flex items-center justify-between">
-          <Image
-            src="/ar-logo.svg"
-            alt="AR Design Logo"
-            className="w-10 h-10"
-            width={100}
-            height={50}
-          />
+          <button
+            onClick={scrollToTop}
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Scroll to top"
+          >
+            <Image
+              src="/ar-logo.svg"
+              alt="AR Design Logo"
+              className="w-10 h-10"
+              width={100}
+              height={50}
+            />
+          </button>
           <div className="absolute left-1/2 -translate-x-1/2">
             <h1 className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
               VISION LANDSCAPE
