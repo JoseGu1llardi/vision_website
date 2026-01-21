@@ -105,3 +105,61 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
     </>
   );
 }
+
+function GalleryImage({
+  image,
+  index,
+  onClick,
+}: {
+  image: string;
+  index: number;
+  onClick: () => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
+    >
+      <Image
+        src={image || "/placeholder.svg"}
+        alt={`Project ${index + 1}`}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        fill
+      />
+      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
+        <span className="text-background text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
+          Click to view
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function CarouselButton({
+  direction,
+  onClick,
+  "aria-label": ariaLabel,
+}: {
+  direction: "prev" | "next";
+  onClick: () => void;
+  "aria-label": string;
+}) {
+  const positionClasses =
+    direction === "prev"
+      ? "left-0 -translate-x-4 md:-translate-x-12"
+      : "right-0 translate-x-4 md:translate-x-12";
+
+  const arrow = direction === "prev" ? "‹" : "›";
+
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute top-1/2 -translate-y-1/2 ${positionClasses} w-12 h-12 bg-background rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group hover:scale-110`}
+      aria-label={ariaLabel}
+    >
+      <span className="text-2xl text-foreground/70 group-hover:text-foreground">
+        {arrow}
+      </span>
+    </button>
+  );
+}
