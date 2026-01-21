@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <HeroSlider images={heroImages} scroll />
+      <HeroSlider images={heroImages} scrolled={scrolled} />
       <AboutSection />
       <ProjectsGrid projects={projects} />
       <GalleryCarousel images={galleryImages} />
