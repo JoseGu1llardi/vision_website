@@ -11,9 +11,9 @@ import { ProjectsGrid } from "./components/home/ProjectsGrid";
 import { AboutSection } from "./components/home/AboutSection";
 import { FormSection } from "./components/home/FormSection";
 
-import { heroImages } from "./data/heroImages.ts";
-import { projects } from "./data/projects.ts";
-import { galleryImages } from "./data/galleryImages.ts";
+import { heroImages } from "./data/heroImages";
+import { projects } from "./data/projects";
+import { galleryImages } from "./data/galleryImages";
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);

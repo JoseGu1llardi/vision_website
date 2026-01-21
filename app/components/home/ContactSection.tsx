@@ -154,6 +154,7 @@ export function ContactSection() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="grayscale hover:grayscale-0 transition-all duration-300"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
               />
 
               {/* Overlay with Click Indicator */}
