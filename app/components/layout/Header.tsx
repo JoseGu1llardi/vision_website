@@ -1,11 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
 
-export function Header() {
+type Page = "home" | "portfolio" | "contact";
+
+interface HeaderProps {
+  currentPage: Page;
+  onNavigate: (page: Page) => void;
+}
+
+export function Header({ currentPage, onNavigate }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -15,23 +21,25 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavigation = (page: Page) => {
+    onNavigate(page);
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 ${
-        scrolled ? "py-3 shadow-md" : "py-3"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 shadow-md py-3">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Desktop Header */}
-        <DesktopHeader scrolled={scrolled} />
+        <DesktopHeader
+          scrolled={scrolled}
+          currentPage={currentPage}
+          onNavigate={handleNavigation}
+        />
 
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between">
-          <div
-            className={`transition-all duration-300 ${
-              scrolled ? "w-8 h-8" : "w-10 h-10"
-            }`}
-          >
+          <div className="w-8 h-8">
             <Image
               src="/ar-logo.svg"
               alt="AR Design Logo"
@@ -42,20 +50,9 @@ export function Header() {
           </div>
 
           <div className="text-center flex-1">
-            <h1
-              className={`tracking-[0.3em] font-light text-black transition-all duration-300 ${
-                scrolled ? "text-base" : "text-xl"
-              }`}
-            >
+            <h1 className="text-base tracking-[0.3em] font-light text-black">
               VISION LANDSCAPE
             </h1>
-            <p
-              className={`text-xs tracking-[0.4em] text-black transition-all duration-300 ${
-                scrolled ? "hidden" : "block"
-              }`}
-            >
-              STUDIO
-            </p>
           </div>
 
           <button
@@ -83,6 +80,8 @@ export function Header() {
 
         <MobileMenu
           isOpen={mobileMenuOpen}
+          currentPage={currentPage}
+          onNavigate={handleNavigation}
           onClose={() => setMobileMenuOpen(false)}
         />
       </div>
@@ -90,15 +89,21 @@ export function Header() {
   );
 }
 
-function DesktopHeader({ scrolled }: { scrolled: boolean }) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+interface DesktopHeaderProps {
+  scrolled: boolean;
+  currentPage: Page;
+  onNavigate: (page: Page) => void;
+}
 
-  const navLinks = [
-    { href: "/", label: "HOME", active: true },
-    { href: "/portfolio", label: "PORTFOLIO" },
-    { href: "/contact", label: "CONTACT" },
+function DesktopHeader({
+  scrolled,
+  currentPage,
+  onNavigate,
+}: DesktopHeaderProps) {
+  const navLinks: { page: Page; label: string }[] = [
+    { page: "home", label: "HOME" },
+    { page: "portfolio", label: "PORTFOLIO" },
+    { page: "contact", label: "CONTACT" },
   ];
 
   return (
@@ -117,14 +122,19 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
             width={100}
             height={50}
           />
-
           <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-1">
             VISION LANDSCAPE
           </h1>
           <p className="text-xs tracking-[0.4em] text-black mb-6">STUDIO</p>
           <nav className="flex items-center gap-12">
             {navLinks.map((link) => (
-              <NavLink key={link.href} {...link} />
+              <NavLink
+                key={link.page}
+                page={link.page}
+                label={link.label}
+                active={currentPage === link.page}
+                onClick={() => onNavigate(link.page)}
+              />
             ))}
           </nav>
         </div>
@@ -137,19 +147,13 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
         }`}
       >
         <div className="flex items-center justify-between">
-          <button
-            onClick={scrollToTop}
-            className="cursor-pointer hover:opacity-80 transition-opacity"
-            aria-label="Scroll to top"
-          >
-            <Image
-              src="/ar-logo.svg"
-              alt="AR Design Logo"
-              className="w-10 h-10"
-              width={100}
-              height={50}
-            />
-          </button>
+          <Image
+            src="/ar-logo.svg"
+            alt="AR Design Logo"
+            className="w-10 h-10"
+            width={100}
+            height={50}
+          />
           <div className="absolute left-1/2 -translate-x-1/2">
             <h1 className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
               VISION LANDSCAPE
@@ -157,7 +161,13 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
           </div>
           <nav className="flex items-center gap-8">
             {navLinks.map((link) => (
-              <NavLink key={link.href} {...link} />
+              <NavLink
+                key={link.page}
+                page={link.page}
+                label={link.label}
+                active={currentPage === link.page}
+                onClick={() => onNavigate(link.page)}
+              />
             ))}
           </nav>
         </div>
@@ -166,18 +176,17 @@ function DesktopHeader({ scrolled }: { scrolled: boolean }) {
   );
 }
 
-function NavLink({
-  href,
-  label,
-  active,
-}: {
-  href: string;
+interface NavLinkProps {
+  page: Page;
   label: string;
   active?: boolean;
-}) {
+  onClick: () => void;
+}
+
+function NavLink({ label, active, onClick }: NavLinkProps) {
   return (
-    <Link
-      href={href}
+    <button
+      onClick={onClick}
       className="text-sm tracking-wider text-foreground/70 hover:text-foreground transition-colors relative group"
     >
       {label}
@@ -186,6 +195,6 @@ function NavLink({
           active ? "w-full" : "w-0 group-hover:w-full"
         }`}
       />
-    </Link>
+    </button>
   );
 }
