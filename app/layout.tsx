@@ -4,6 +4,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+import { Header } from "./components/layout/Header";
+
 const playfair = Playfair_Display({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -37,7 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.className} ${inter.variable} antialiased`}>
+      <body
+        className={`${playfair.className} ${inter.variable} antialiased h-screen overflow-hidden`}
+      >
+        <Header />
         {children}
         <Analytics />
       </body>
