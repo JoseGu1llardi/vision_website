@@ -43,10 +43,8 @@ export default function RootLayout({
       <body
         className={`${playfair.className} ${inter.variable} antialiased h-screen`}
       >
-        <Header />
         {children}
         <Analytics />
-        <Footer />
       </body>
     </html>
   );
