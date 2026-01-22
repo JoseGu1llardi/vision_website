@@ -1,32 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { HeroSlider } from "./components/home/HeroSlider";
-import { GalleryCarousel } from "./components/home/GalleryCarousel";
-import { ContactSection } from "./components/home/ContactSection";
-import { ProjectsGrid } from "./components/home/ProjectsGrid";
-import { AboutSection } from "./components/home/AboutSection";
-import { FormSection } from "./components/home/FormSection";
+import { HomePage } from "./components/pages/HomePage";
+import { PortfolioPage } from "./components/pages/PortfolioPage";
+import { ContactPage } from "./components/pages/ContactPage";
 
-import { heroImages } from "./data/heroImages";
-import { projects } from "./data/projects";
-import { galleryImages } from "./data/galleryImages";
+type Page = "home" | "portfolio" | "contact";
 
-export default function HomePage() {
-  const [scrolled, setScrolled] = useState(false);
+export default function MainPage() {
+  const [currentPage, setCurrentPage] = useState<Page>("home");
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const renderPage = () => {
+    switch (currentPage) {
+      case "home":
+        return <HomePage />;
+      case "portfolio":
+        return <PortfolioPage />;
+      case "contact":
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  };
 
   return (
     <div className="min-h-screen">
-      <HeroSlider images={heroImages} scrolled={scrolled} />
+      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <main className="transition-opacity duration-300">{renderPage()}</main>
+      <Footer />
     </div>
   );
 }

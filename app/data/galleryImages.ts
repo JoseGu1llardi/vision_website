@@ -1,4 +1,4 @@
-export const galleryImages = [
+export const galleryImages: string[] = [
   "/gd1.jpg",
   "/gd2.jpg",
   "/gd3.jpg",
