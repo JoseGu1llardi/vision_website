@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -40,11 +41,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.className} ${inter.variable} antialiased h-screen overflow-hidden`}
+        className={`${playfair.className} ${inter.variable} antialiased h-screen`}
       >
         <Header />
         {children}
         <Analytics />
+        <Footer />
       </body>
     </html>
   );

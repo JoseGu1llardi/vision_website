@@ -27,8 +27,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <HeroSlider images={heroImages} scrolled={scrolled} />
-      <FormSection />
-      <Footer />
     </div>
   );
 }
