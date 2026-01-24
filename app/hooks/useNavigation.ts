@@ -7,7 +7,7 @@ interface NavigationStore {
   setPage: (page: Page) => void;
 }
 
-export const useNavigation = create<NavigationStore>((set) => ({
+export const useNavigation = create<NavigationStore>()((set) => ({
   currentPage: "home",
   setPage: (page) => set({ currentPage: page }),
 }));
