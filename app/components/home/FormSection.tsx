@@ -127,7 +127,7 @@ export function FormSection() {
   const messageLength = formData.message.length;
 
   return (
-    <section className="py-12 px-4 bg-background">
+    <section className="py-0 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
