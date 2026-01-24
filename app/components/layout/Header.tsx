@@ -28,7 +28,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 shadow-md py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 py-3">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Desktop Header */}
         <DesktopHeader
