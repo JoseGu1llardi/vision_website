@@ -15,13 +15,13 @@ export default function MainPage() {
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage} />;
       case "portfolio":
         return <PortfolioPage />;
       case "contact":
         return <ContactPage />;
       default:
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage} />;
     }
   };
 
