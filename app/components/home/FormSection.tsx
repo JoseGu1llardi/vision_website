@@ -47,7 +47,7 @@ export function FormSection() {
             </span>
             <div className="h-px bg-foreground/20 mt-2 w-16 mx-auto" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
             Ready to transform your outdoor space? Let's discuss your vision and
             bring your dream landscape to life.
