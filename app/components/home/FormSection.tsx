@@ -38,9 +38,9 @@ export function FormSection() {
   };
 
   return (
-    <section className="py-20 px-4 bg-background">
+    <section className="py-2 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="inline-block mb-4">
             <span className="text-sm tracking-widest text-foreground/60 font-medium uppercase">
               Get in Touch
@@ -55,15 +55,6 @@ export function FormSection() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="bg-foreground/5 rounded-lg p-6 border-l-4 border-foreground/30 mb-12">
-            <h3 className="font-semibold text-foreground mb-2">
-              Visits to our showroom are by appointment only.
-            </h3>
-            <p className="text-sm text-foreground/60">
-              To discuss your project and vision with us
-            </p>
-          </div>
-
           <div className="bg-foreground/2 rounded-lg p-10 md:p-12 border border-foreground/10">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
