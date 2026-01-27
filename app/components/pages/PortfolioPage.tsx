@@ -1,7 +1,7 @@
 "use client";
 
-import { ProjectsGrid } from "../home/ProjectsGrid";
-import { GalleryCarousel } from "../home/GalleryCarousel";
+import { ProjectsGrid } from "../sections/ProjectsGrid";
+import { GalleryCarousel } from "../sections/GalleryCarousel";
 import { projects } from "../../data/projects";
 import { galleryImages } from "../../data/galleryImages";
 

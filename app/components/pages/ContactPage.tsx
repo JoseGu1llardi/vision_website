@@ -1,6 +1,6 @@
 "use client";
 
-import { FormSection } from "../home/FormSection";
+import { FormSection } from "../sections/FormSection";
 import Image from "next/image";
 import { Instagram } from "lucide-react";
 import Link from "next/link";
