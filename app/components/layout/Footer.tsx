@@ -30,16 +30,14 @@ export function Footer() {
           {/* Brand Name */}
           <div>
             <h2 className="text-lg tracking-[0.3em] text-foreground/70 font-light mb-1">
-              VISION LANDSCAPE
+              VISION LANDSCAPES
             </h2>
-            <p className="text-xs tracking-[0.4em] text-foreground/50">
-              STUDIO
-            </p>
+            <p className="text-xs tracking-[0.4em] text-foreground/50"></p>
           </div>
 
           {/* Copyright */}
           <div className="text-sm text-foreground/60 pt-4 border-t border-foreground/10 w-full">
-            © 2025 Vision Landscape Limited. All rights reserved.
+            © 2025 Vision Landscapes Limited. All rights reserved.
           </div>
         </div>
       </div>
