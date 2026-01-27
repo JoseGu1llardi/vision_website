@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export function ContactPage() {
   return (
-    <div className="min-h-screen pt-28 md:pt-20">
+    <div className="min-h-screen pt-28 md:pt-40">
       <FormSection />
     </div>
   );
