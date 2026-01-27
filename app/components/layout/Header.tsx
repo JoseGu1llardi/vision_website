@@ -123,9 +123,9 @@ function DesktopHeader({
             height={50}
           />
           <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-1">
-            VISION LANDSCAPE
+            VISION LANDSCAPES
           </h1>
-          <p className="text-xs tracking-[0.4em] text-black mb-6">STUDIO</p>
+          <p className="text-xs tracking-[0.4em] text-black mb-6"></p>
           <nav className="flex items-center gap-12">
             {navLinks.map((link) => (
               <NavLink
