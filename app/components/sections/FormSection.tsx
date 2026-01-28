@@ -232,7 +232,7 @@ export function FormSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="+353 85 813 4165"
+                    placeholder="+353 00 000 0000"
                     className={`w-full px-0 py-3 bg-transparent border-b-2 outline-none transition-all text-foreground placeholder:text-foreground/30 ${
                       touched.phone && errors.phone
                         ? "border-red-500 focus:border-red-600"
@@ -279,31 +279,36 @@ export function FormSection() {
                   What service are you interested in?
                 </label>
                 <div className="flex-1 flex flex-wrap gap-4">
-                  {["Design", "Collection", "Planting", "Other"].map(
-                    (service) => (
-                      <label
-                        key={service}
-                        className="relative flex items-center gap-2 cursor-pointer group"
-                      >
-                        <input
-                          type="radio"
-                          name="service"
-                          value={service}
-                          checked={formData.service === service}
-                          onChange={handleChange}
-                          className="peer sr-only"
-                        />
-                        <div className="w-5 h-5 rounded-full border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
-                          {formData.service === service && (
-                            <div className="w-2 h-2 rounded-full bg-white" />
-                          )}
-                        </div>
-                        <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
-                          {service}
-                        </span>
-                      </label>
-                    ),
-                  )}
+                  {[
+                    "Bespoke Garden Room",
+                    "Softscaping",
+                    "Hardscaping",
+                    "Maintenance",
+                    "Planting",
+                    "Other",
+                  ].map((service) => (
+                    <label
+                      key={service}
+                      className="relative flex items-center gap-2 cursor-pointer group"
+                    >
+                      <input
+                        type="radio"
+                        name="service"
+                        value={service}
+                        checked={formData.service === service}
+                        onChange={handleChange}
+                        className="peer sr-only"
+                      />
+                      <div className="w-5 h-5 rounded-full border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
+                        {formData.service === service && (
+                          <div className="w-2 h-2 rounded-full bg-white" />
+                        )}
+                      </div>
+                      <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
+                        {service}
+                      </span>
+                    </label>
+                  ))}
                 </div>
               </div>
 
