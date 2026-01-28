@@ -69,7 +69,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
       </section>
 
       {/* Elegant Overlay */}
-      <div className="absolute inset-0 bg-linear-to-b from-foreground/20 via-transparent to-foreground/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/20 via-transparent to-foreground/40 pointer-events-none" />
 
       {/* Central Content */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none pt-30 md:pt-38">
@@ -99,41 +99,9 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
             Creating Extraordinary Outdoor Spaces
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6 pointer-events-auto animate-in slide-in-from-bottom-4 duration-700 delay-700">
-            <button
-              onClick={() => onNavigate("portfolio")}
-              className="group px-8 py-3 bg-white/10 backdrop-blur-md text-white border-2 border-white/30 rounded-lg hover:bg-white hover:text-foreground transition-all duration-300 font-medium tracking-wide"
-            >
-              <span className="flex items-center gap-2">
-                View Portfolio
-                <svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </button>
-
-            <button
-              onClick={() => onNavigate("contact")}
-              className="px-8 py-3 bg-white text-foreground rounded-lg hover:bg-white/90 transition-all duration-300 font-medium tracking-wide hover:shadow-2xl"
-            >
-              Get in Touch
-            </button>
-          </div>
-
           {/* Subtitle */}
           <p
-            className="text-sm md:text-base text-white tracking-widest uppercase animate-in fade-in duration-700 delay-900 drop-shadow-lg mt-20"
+            className="text-sm md:text-base text-white tracking-widest uppercase animate-in fade-in duration-700 delay-700 drop-shadow-lg"
             style={{
               textShadow:
                 "0 0 20px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.7)",
