@@ -26,7 +26,7 @@ export function StorySection({ onNavigate }: StorySectionProps) {
           <p>
             We began as{" "}
             <span className="font-semibold text-foreground">
-              Vision Landscape Solutions
+              Vision Landscapes Solutions
             </span>{" "}
             with a dedicated focus on meticulous maintenance, nurturing and
             preserving the beauty of outdoor spaces. That core commitment to
@@ -36,7 +36,7 @@ export function StorySection({ onNavigate }: StorySectionProps) {
           <p>
             Today, as{" "}
             <span className="font-semibold text-foreground">
-              Vision Landscapes
+              Vision Landscapes Limited
             </span>
             , we have proudly evolved into a full-service partner for your most
             ambitious outdoor projects. We now combine our deep horticultural
