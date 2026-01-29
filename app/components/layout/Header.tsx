@@ -122,10 +122,16 @@ function DesktopHeader({
             width={100}
             height={50}
           />
-          <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-1">
+          <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-2">
             VISION LANDSCAPES
           </h1>
-          <p className="text-xs tracking-[0.4em] text-black mb-6"></p>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-foreground/30"></div>
+            <p className="text-sm tracking-[0.3em] text-black/90 font-light">
+              LIMITED
+            </p>
+            <div className="h-px w-8 bg-foreground/30"></div>
+          </div>
           <nav className="flex items-center gap-12">
             {navLinks.map((link) => (
               <NavLink
@@ -156,7 +162,7 @@ function DesktopHeader({
           />
           <div className="absolute left-1/2 -translate-x-1/2">
             <h1 className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
-              VISION LANDSCAPE
+              VISION LANDSCAPES
             </h1>
           </div>
           <nav className="flex items-center gap-8">
