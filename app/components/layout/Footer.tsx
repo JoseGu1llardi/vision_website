@@ -18,6 +18,10 @@ export function Footer() {
             <h2 className="text-2xl tracking-[0.3em] text-foreground/80 group-hover:text-[#237c20] font-light mb-1 transition-colors">
               VISION LANDSCAPE
             </h2>
+
+            <p className="text-xs tracking-[0.3em] text-black/90 font-light mt-2">
+              LIMITED
+            </p>
           </button>
 
           {/* Elegant Divider */}
