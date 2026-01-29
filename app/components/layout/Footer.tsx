@@ -52,7 +52,7 @@ export function Footer() {
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/visionlandscapes"
+              href="https://www.facebook.com/Visonlandscapesolutions"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-1.5 transition-all duration-300"
