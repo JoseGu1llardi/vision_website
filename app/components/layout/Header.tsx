@@ -127,7 +127,7 @@ function DesktopHeader({
           </h1>
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-foreground/30"></div>
-            <p className="text-sm tracking-[0.3em] text-black/90 font-light">
+            <p className="text-xs tracking-[0.3em] text-black/90 font-light">
               LIMITED
             </p>
             <div className="h-px w-8 bg-foreground/30"></div>
