@@ -69,7 +69,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
       </section>
 
       {/* Elegant Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/20 via-transparent to-foreground/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-foreground/20 via-transparent to-foreground/40 pointer-events-none" />
 
       {/* Central Content */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none pt-30 md:pt-38">
@@ -83,7 +83,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                   "0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.8)",
               }}
             >
-              VISION LANDSCAPE
+              VISION LANDSCAPES
             </h1>
             <div className="h-px w-32 bg-white/60 mx-auto" />
           </div>
