@@ -15,7 +15,7 @@ export function FormSection() {
     email: "",
     phone: "",
     location: "",
-    services: [] as string[], // Mudado para array
+    services: [] as string[], // Array para múltiplas seleções
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -90,7 +90,13 @@ export function FormSection() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    console.log("Form submitted:", formData);
+    // Formatar os dados para envio
+    const formattedData = {
+      ...formData,
+      services: formData.services.join(", "), // Formata como "Design, Collection, Planting"
+    };
+
+    console.log("Form submitted:", formattedData);
     setIsSubmitting(false);
     setShowModal(true);
 
@@ -100,7 +106,7 @@ export function FormSection() {
       email: "",
       phone: "",
       location: "",
-      service: "",
+      services: [],
       message: "",
     });
     setErrors({});
@@ -121,6 +127,18 @@ export function FormSection() {
       const error = validateField(name, value);
       setErrors({ ...errors, [name]: error });
     }
+  };
+
+  const handleServiceChange = (service: string) => {
+    setFormData((prev) => {
+      const isSelected = prev.services.includes(service);
+      return {
+        ...prev,
+        services: isSelected
+          ? prev.services.filter((s) => s !== service)
+          : [...prev.services, service],
+      };
+    });
   };
 
   const maxMessageLength = 500;
@@ -232,7 +250,7 @@ export function FormSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="+353 00 000 0000"
+                    placeholder="+353 85 813 4165"
                     className={`w-full px-0 py-3 bg-transparent border-b-2 outline-none transition-all text-foreground placeholder:text-foreground/30 ${
                       touched.phone && errors.phone
                         ? "border-red-500 focus:border-red-600"
@@ -286,16 +304,26 @@ export function FormSection() {
                         className="relative flex items-center gap-2 cursor-pointer group"
                       >
                         <input
-                          type="radio"
-                          name="service"
-                          value={service}
-                          checked={formData.service === service}
-                          onChange={handleChange}
+                          type="checkbox"
+                          checked={formData.services.includes(service)}
+                          onChange={() => handleServiceChange(service)}
                           className="peer sr-only"
                         />
-                        <div className="w-5 h-5 rounded-full border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
-                          {formData.service === service && (
-                            <div className="w-2 h-2 rounded-full bg-white" />
+                        <div className="w-5 h-5 rounded border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
+                          {formData.services.includes(service) && (
+                            <svg
+                              className="w-3 h-3 text-white"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={3}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
                           )}
                         </div>
                         <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
