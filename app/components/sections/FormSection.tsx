@@ -15,7 +15,7 @@ export function FormSection() {
     email: "",
     phone: "",
     location: "",
-    service: "",
+    services: [] as string[], // Mudado para array
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -127,7 +127,7 @@ export function FormSection() {
   const messageLength = formData.message.length;
 
   return (
-    <section className="py-8 px-4 bg-background">
+    <section className="py-12 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
@@ -279,36 +279,31 @@ export function FormSection() {
                   What service are you interested in?
                 </label>
                 <div className="flex-1 flex flex-wrap gap-4">
-                  {[
-                    "Bespoke Garden Room",
-                    "Softscaping",
-                    "Hardscaping",
-                    "Maintenance",
-                    "Planting",
-                    "Other",
-                  ].map((service) => (
-                    <label
-                      key={service}
-                      className="relative flex items-center gap-2 cursor-pointer group"
-                    >
-                      <input
-                        type="radio"
-                        name="service"
-                        value={service}
-                        checked={formData.service === service}
-                        onChange={handleChange}
-                        className="peer sr-only"
-                      />
-                      <div className="w-5 h-5 rounded-full border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
-                        {formData.service === service && (
-                          <div className="w-2 h-2 rounded-full bg-white" />
-                        )}
-                      </div>
-                      <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
-                        {service}
-                      </span>
-                    </label>
-                  ))}
+                  {["Design", "Collection", "Planting", "Other"].map(
+                    (service) => (
+                      <label
+                        key={service}
+                        className="relative flex items-center gap-2 cursor-pointer group"
+                      >
+                        <input
+                          type="radio"
+                          name="service"
+                          value={service}
+                          checked={formData.service === service}
+                          onChange={handleChange}
+                          className="peer sr-only"
+                        />
+                        <div className="w-5 h-5 rounded-full border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
+                          {formData.service === service && (
+                            <div className="w-2 h-2 rounded-full bg-white" />
+                          )}
+                        </div>
+                        <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
+                          {service}
+                        </span>
+                      </label>
+                    ),
+                  )}
                 </div>
               </div>
 
