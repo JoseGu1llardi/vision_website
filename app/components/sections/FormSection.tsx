@@ -15,7 +15,7 @@ export function FormSection() {
     email: "",
     phone: "",
     location: "",
-    services: [] as string[], // Array para múltiplas seleções
+    services: [] as string[],
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -29,7 +29,7 @@ export function FormSection() {
   };
 
   const validatePhone = (phone: string) => {
-    if (!phone) return true; // Optional field
+    if (!phone) return true;
     const re = /^[\d\s+()-]+$/;
     return re.test(phone) && phone.replace(/\D/g, "").length >= 7;
   };
@@ -61,17 +61,15 @@ export function FormSection() {
     setErrors({ ...errors, [name]: error });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validate all fields
     const newErrors: FormErrors = {
       name: validateField("name", formData.name),
       email: validateField("email", formData.email),
       phone: validateField("phone", formData.phone),
     };
 
-    // Mark all as touched
     setTouched({
       name: true,
       email: true,
@@ -79,7 +77,6 @@ export function FormSection() {
       service: true,
     });
 
-    // Check if there are errors
     if (Object.values(newErrors).some((error) => error)) {
       setErrors(newErrors);
       return;
@@ -88,29 +85,19 @@ export function FormSection() {
     setIsSubmitting(true);
 
     try {
-      // Prepare form data for Netlify
-      const form = e.target as HTMLFormElement;
-      const formDataToSend = new FormData(form);
+      const formElement = e.currentTarget;
+      const data = new FormData(formElement);
 
-      // Add services as formatted string
-      formDataToSend.set("services", formData.services.join(", "));
-
-      // Submit to Netlify
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataToSend as any).toString(),
+        body: new URLSearchParams(data as any).toString(),
       });
 
-      console.log("Form submitted successfully:", {
-        ...formData,
-        services: formData.services.join(", "),
-      });
-
+      console.log("Form submitted successfully");
       setIsSubmitting(false);
       setShowModal(true);
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -137,7 +124,6 @@ export function FormSection() {
       [name]: value,
     });
 
-    // Clear error when user starts typing
     if (touched[name] && errors[name as keyof FormErrors]) {
       const error = validateField(name, value);
       setErrors({ ...errors, [name]: error });
@@ -161,16 +147,6 @@ export function FormSection() {
 
   return (
     <section className="py-12 px-4 bg-background">
-      {/* Hidden form for Netlify detection - DO NOT REMOVE */}
-      <form name="contact" netlify="true" netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <input type="text" name="location" />
-        <input type="text" name="services" />
-        <textarea name="message"></textarea>
-      </form>
-
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
@@ -187,22 +163,17 @@ export function FormSection() {
             <form
               onSubmit={handleSubmit}
               className="space-y-8"
-              noValidate
               name="contact"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
             >
-              {/* Hidden fields for Netlify */}
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
 
-              {/* Hidden field for services to send as formatted string */}
-              <input
-                type="hidden"
-                name="services"
-                value={formData.services.join(", ")}
-              />
+              {/* Bot field */}
+              <div style={{ display: "none" }}>
+                <input name="bot-field" />
+              </div>
 
               {/* Name */}
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
@@ -335,6 +306,13 @@ export function FormSection() {
                 />
               </div>
 
+              {/* Services - Hidden input for Netlify */}
+              <input
+                type="hidden"
+                name="services"
+                value={formData.services.join(", ")}
+              />
+
               {/* Service Interest */}
               <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
                 <label className="text-foreground/80 font-medium md:w-48 shrink-0">
@@ -464,7 +442,6 @@ export function FormSection() {
               onClick={(e) => e.stopPropagation()}
               className="bg-background rounded-lg shadow-2xl max-w-md w-full p-8 md:p-10 animate-in zoom-in duration-300"
             >
-              {/* Success Icon */}
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
                   className="w-8 h-8 text-green-600"
@@ -481,7 +458,6 @@ export function FormSection() {
                 </svg>
               </div>
 
-              {/* Message */}
               <h3 className="text-2xl font-bold text-center mb-3">
                 Thank You!
               </h3>
@@ -490,7 +466,6 @@ export function FormSection() {
                 discuss your landscape project.
               </p>
 
-              {/* Close Button */}
               <button
                 onClick={() => setShowModal(false)}
                 className="w-full px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all font-medium tracking-wide"
