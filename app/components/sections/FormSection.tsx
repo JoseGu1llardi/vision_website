@@ -161,6 +161,16 @@ export function FormSection() {
 
   return (
     <section className="py-12 px-4 bg-background">
+      {/* Hidden form for Netlify detection - DO NOT REMOVE */}
+      <form name="contact" netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <input type="text" name="location" />
+        <input type="text" name="services" />
+        <textarea name="message"></textarea>
+      </form>
+
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
@@ -193,6 +203,7 @@ export function FormSection() {
                 name="services"
                 value={formData.services.join(", ")}
               />
+
               {/* Name */}
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
                 <label className="text-foreground/80 font-medium md:w-48 shrink-0 pt-3">
