@@ -87,30 +87,45 @@ export function FormSection() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Prepare form data for Netlify
+      const form = e.target as HTMLFormElement;
+      const formDataToSend = new FormData(form);
 
-    // Formatar os dados para envio
-    const formattedData = {
-      ...formData,
-      services: formData.services.join(", "), // Formata como "Design, Collection, Planting"
-    };
+      // Add services as formatted string
+      formDataToSend.set("services", formData.services.join(", "));
 
-    console.log("Form submitted:", formattedData);
-    setIsSubmitting(false);
-    setShowModal(true);
+      // Submit to Netlify
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formDataToSend as any).toString(),
+      });
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      location: "",
-      services: [],
-      message: "",
-    });
-    setErrors({});
-    setTouched({});
+      console.log("Form submitted successfully:", {
+        ...formData,
+        services: formData.services.join(", "),
+      });
+
+      setIsSubmitting(false);
+      setShowModal(true);
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        services: [],
+        message: "",
+      });
+      setErrors({});
+      setTouched({});
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      alert("There was an error submitting the form. Please try again.");
+    }
   };
 
   const handleChange = (
@@ -159,7 +174,25 @@ export function FormSection() {
 
         <div className="max-w-5xl mx-auto">
           <div className="bg-foreground/2 rounded-lg p-10 md:p-12 border border-foreground/10">
-            <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-8"
+              noValidate
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              {/* Hidden fields for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
+
+              {/* Hidden field for services to send as formatted string */}
+              <input
+                type="hidden"
+                name="services"
+                value={formData.services.join(", ")}
+              />
               {/* Name */}
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
                 <label className="text-foreground/80 font-medium md:w-48 shrink-0 pt-3">
