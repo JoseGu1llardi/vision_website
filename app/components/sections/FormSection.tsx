@@ -323,8 +323,6 @@ export function FormSection() {
                     "Bespoke Garden Room",
                     "Softscaping",
                     "Hardscaping",
-                    "Garden Maintenance",
-                    "Landscape Lighting",
                     "Planting Services",
                     "Other",
                   ].map((service) => (
