@@ -265,7 +265,7 @@ export function FormSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="+353 85 813 4165"
+                    placeholder="+353 00 000 0000"
                     className={`w-full px-0 py-3 bg-transparent border-b-2 outline-none transition-all text-foreground placeholder:text-foreground/30 ${
                       touched.phone && errors.phone
                         ? "border-red-500 focus:border-red-600"
@@ -319,41 +319,47 @@ export function FormSection() {
                   What service are you interested in?
                 </label>
                 <div className="flex-1 flex flex-wrap gap-4">
-                  {["Design", "Collection", "Planting", "Other"].map(
-                    (service) => (
-                      <label
-                        key={service}
-                        className="relative flex items-center gap-2 cursor-pointer group"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={formData.services.includes(service)}
-                          onChange={() => handleServiceChange(service)}
-                          className="peer sr-only"
-                        />
-                        <div className="w-5 h-5 rounded border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
-                          {formData.services.includes(service) && (
-                            <svg
-                              className="w-3 h-3 text-white"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={3}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          )}
-                        </div>
-                        <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
-                          {service}
-                        </span>
-                      </label>
-                    ),
-                  )}
+                  {[
+                    "Bespoke Garden Room",
+                    "Softscaping",
+                    "Hardscaping",
+                    "Garden Maintenance",
+                    "Landscape Lighting",
+                    "Planting Services",
+                    "Other",
+                  ].map((service) => (
+                    <label
+                      key={service}
+                      className="relative flex items-center gap-2 cursor-pointer group"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={formData.services.includes(service)}
+                        onChange={() => handleServiceChange(service)}
+                        className="peer sr-only"
+                      />
+                      <div className="w-5 h-5 rounded border-2 border-foreground/30 peer-checked:border-green-600 peer-checked:bg-green-600 transition-all flex items-center justify-center group-hover:border-foreground/50">
+                        {formData.services.includes(service) && (
+                          <svg
+                            className="w-3 h-3 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={3}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="text-foreground/80 group-hover:text-foreground transition-colors select-none">
+                        {service}
+                      </span>
+                    </label>
+                  ))}
                 </div>
               </div>
 
@@ -374,7 +380,8 @@ export function FormSection() {
                   />
                   <div className="flex justify-between items-center mt-2">
                     <p className="text-xs text-foreground/50">
-                      Optional - Help us understand your needs better
+                      Design - We do not do in-house Landscape design, but we
+                      will put you in touch with are Landscape partners.
                     </p>
                     <p
                       className={`text-xs ${
