@@ -1,10 +1,15 @@
 "use client";
 
-export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+const INSTAGRAM_URL =
+  "https://www.instagram.com/visionlandscapes.ltd?igsh=eHNhYjN6azB1cWQ2";
+const FACEBOOK_URL = "https://www.facebook.com/Visonlandscapesolutions";
+const CURRENT_YEAR = new Date().getFullYear();
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+export function Footer() {
   return (
     <footer className="bg-background py-8 px-4 border-t border-foreground/10">
       <div className="container mx-auto max-w-4xl">
@@ -27,7 +32,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/visionlandscapes.ltd?igsh=eHNhYjN6azB1cWQ2"
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-1.5 transition-all duration-300"
@@ -52,7 +57,7 @@ export function Footer() {
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/Visonlandscapesolutions"
+              href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-1.5 transition-all duration-300"
@@ -75,7 +80,7 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="text-xs text-foreground/50 pt-3 border-t border-foreground/10 w-full max-w-md">
-            © 2025 Vision Landscape Limited. All rights reserved.
+            © {CURRENT_YEAR} Vision Landscape Limited. All rights reserved.
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
-
-type Page = "home" | "portfolio" | "contact";
+import { NAV_LINKS } from "./constants";
+import type { Page } from "../../types";
 
 interface HeaderProps {
   currentPage: Page;
@@ -17,7 +17,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -30,7 +30,6 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 py-3">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Desktop Header */}
         <DesktopHeader
           scrolled={scrolled}
           currentPage={currentPage}
@@ -58,7 +57,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:opacity-70 transition-opacity"
-            aria-label="Menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             <span
               className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
@@ -82,7 +82,6 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           isOpen={mobileMenuOpen}
           currentPage={currentPage}
           onNavigate={handleNavigation}
-          onClose={() => setMobileMenuOpen(false)}
         />
       </div>
     </header>
@@ -95,17 +94,7 @@ interface DesktopHeaderProps {
   onNavigate: (page: Page) => void;
 }
 
-function DesktopHeader({
-  scrolled,
-  currentPage,
-  onNavigate,
-}: DesktopHeaderProps) {
-  const navLinks: { page: Page; label: string }[] = [
-    { page: "home", label: "HOME" },
-    { page: "portfolio", label: "PORTFOLIO" },
-    { page: "contact", label: "CONTACT" },
-  ];
-
+function DesktopHeader({ scrolled, currentPage, onNavigate }: DesktopHeaderProps) {
   return (
     <div className="hidden md:block">
       {/* Unscrolled State */}
@@ -133,10 +122,9 @@ function DesktopHeader({
             <div className="h-px w-8 bg-foreground/30"></div>
           </div>
           <nav className="flex items-center gap-12">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.page}
-                page={link.page}
                 label={link.label}
                 active={currentPage === link.page}
                 onClick={() => onNavigate(link.page)}
@@ -166,10 +154,9 @@ function DesktopHeader({
             </h1>
           </div>
           <nav className="flex items-center gap-8">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.page}
-                page={link.page}
                 label={link.label}
                 active={currentPage === link.page}
                 onClick={() => onNavigate(link.page)}
@@ -183,7 +170,6 @@ function DesktopHeader({
 }
 
 interface NavLinkProps {
-  page: Page;
   label: string;
   active?: boolean;
   onClick: () => void;
