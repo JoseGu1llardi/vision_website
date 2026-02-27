@@ -1,31 +1,15 @@
 "use client";
 
-type Page = "home" | "portfolio" | "contact";
+import { NAV_LINKS } from "./constants";
+import type { Page } from "../../types";
 
 interface MobileMenuProps {
   isOpen: boolean;
   currentPage: Page;
   onNavigate: (page: Page) => void;
-  onClose: () => void;
 }
 
-export function MobileMenu({
-  isOpen,
-  currentPage,
-  onNavigate,
-  onClose,
-}: MobileMenuProps) {
-  const links: { page: Page; label: string }[] = [
-    { page: "home", label: "HOME" },
-    { page: "portfolio", label: "PORTFOLIO" },
-    { page: "contact", label: "CONTACT" },
-  ];
-
-  const handleClick = (page: Page) => {
-    onNavigate(page);
-    onClose();
-  };
-
+export function MobileMenu({ isOpen, currentPage, onNavigate }: MobileMenuProps) {
   return (
     <div
       className={`md:hidden overflow-hidden transition-all duration-300 ${
@@ -33,10 +17,10 @@ export function MobileMenu({
       }`}
     >
       <nav className="flex flex-col items-center gap-6 py-4">
-        {links.map((link) => (
+        {NAV_LINKS.map((link) => (
           <button
             key={link.page}
-            onClick={() => handleClick(link.page)}
+            onClick={() => onNavigate(link.page)}
             className="text-sm tracking-wider text-foreground/70 hover:text-foreground transition-colors relative group"
           >
             {link.label}
