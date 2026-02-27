@@ -11,16 +11,16 @@ interface GalleryCarouselProps {
 export function GalleryCarousel({ images }: GalleryCarouselProps) {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [itemsPerSlide, setItemsPerSlide] = useState(3); // 🔑 SSR-safe default
+  const [itemsPerSlide, setItemsPerSlide] = useState(3); // SSR-safe default
 
-  // ✅ Detecta mobile SOMENTE no client
+  // Detect viewport width on the client only to avoid SSR mismatch
   useEffect(() => {
     const handleResize = () => {
       setItemsPerSlide(window.innerWidth < 768 ? 1 : 3);
     };
 
-    handleResize(); // roda uma vez no mount
-    window.addEventListener("resize", handleResize);
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -69,13 +69,13 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
             <CarouselButton
               direction="prev"
               onClick={prevGallerySlide}
-              aria-label="Previous"
+              aria-label="Previous slide"
             />
 
             <CarouselButton
               direction="next"
               onClick={nextGallerySlide}
-              aria-label="Next"
+              aria-label="Next slide"
             />
 
             <div className="flex justify-center gap-2 mt-8">
@@ -117,7 +117,10 @@ function GalleryImage({
 }) {
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => e.key === "Enter" && onClick()}
       className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
     >
       <Image
