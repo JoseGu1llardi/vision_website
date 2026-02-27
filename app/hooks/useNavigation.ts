@@ -1,6 +1,5 @@
 import { create } from "zustand";
-
-type Page = "home" | "portfolio" | "contact";
+import type { Page } from "../types";
 
 interface NavigationStore {
   currentPage: Page;

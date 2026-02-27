@@ -6,8 +6,7 @@ import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./components/pages/HomePage";
 import { PortfolioPage } from "./components/pages/PortfolioPage";
 import { ContactPage } from "./components/pages/ContactPage";
-
-type Page = "home" | "portfolio" | "contact";
+import type { Page } from "./types";
 
 export default function MainPage() {
   const [currentPage, setCurrentPage] = useState<Page>("home");

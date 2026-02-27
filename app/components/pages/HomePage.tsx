@@ -2,9 +2,10 @@
 
 import { HeroSection } from "../sections/HeroSection";
 import { StorySection } from "../sections/StorySection";
+import type { Page } from "../../types";
 
 interface HomePageProps {
-  onNavigate: (page: "home" | "portfolio" | "contact") => void;
+  onNavigate: (page: Page) => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
