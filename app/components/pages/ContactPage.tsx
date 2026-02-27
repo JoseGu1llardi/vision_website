@@ -1,9 +1,4 @@
-"use client";
-
 import { FormSection } from "../sections/contact";
-import Image from "next/image";
-import { Instagram } from "lucide-react";
-import Link from "next/link";
 
 export function ContactPage() {
   return (
