@@ -2,32 +2,33 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import type { Page } from "../../types";
 
 interface HeroSectionProps {
-  onNavigate: (page: "home" | "portfolio" | "contact") => void;
+  onNavigate: (page: Page) => void;
 }
+
+const HERO_IMAGES = [
+  {
+    url: "https://images.unsplash.com/photo-1594498653385-d5172c532c00?q=80&w=1074&auto=format&fit=crop",
+    alt: "Modern garden design",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1681900525806-a7d3f266128c?q=80&w=1171&auto=format&fit=crop",
+    alt: "Contemporary landscape",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1763479142885-47f05d01cad1?q=80&w=1170&auto=format&fit=crop",
+    alt: "Luxury outdoor space",
+  },
+];
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const heroImages = [
-    {
-      url: "https://images.unsplash.com/photo-1594498653385-d5172c532c00?q=80&w=1074&auto=format&fit=crop",
-      alt: "Modern garden design",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1681900525806-a7d3f266128c?q=80&w=1171&auto=format&fit=crop",
-      alt: "Contemporary landscape",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1763479142885-47f05d01cad1?q=80&w=1170&auto=format&fit=crop",
-      alt: "Luxury outdoor space",
-    },
-  ];
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+      setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -36,7 +37,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
     <div className="min-h-screen relative pt-20 md:pt-24">
       {/* Hero Slider */}
       <section className="relative h-screen -mt-20 md:-mt-24">
-        {heroImages.map((image, index) => (
+        {HERO_IMAGES.map((image, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -55,7 +56,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
 
         {/* Slide Dots */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          {heroImages.map((_, index) => (
+          {HERO_IMAGES.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}

@@ -1,7 +1,9 @@
 "use client";
 
+import type { Page } from "../../types";
+
 interface StorySectionProps {
-  onNavigate: (page: "home" | "portfolio" | "contact") => void;
+  onNavigate: (page: Page) => void;
 }
 
 export function StorySection({ onNavigate }: StorySectionProps) {
