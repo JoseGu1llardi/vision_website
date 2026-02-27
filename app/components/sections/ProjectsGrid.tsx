@@ -1,13 +1,5 @@
-"use client";
-
 import Image from "next/image";
-
-interface Project {
-  name: string;
-  image: string;
-  description: string;
-  summary: string;
-}
+import { type Project } from "../../data/projects";
 
 interface ProjectsGridProps {
   projects: Project[];
@@ -26,8 +18,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+          {projects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
       </div>
