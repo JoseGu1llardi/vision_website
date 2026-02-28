@@ -4,16 +4,12 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-import { Header } from "./components/layout/Header";
-import { Footer } from "./components/layout/Footer";
-
 const playfair = Playfair_Display({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "AR Design – Award Winning Landscape Designers",
   description: "Professional landscape design studio based in Dublin, Ireland",
-  generator: "v0.app",
   icons: {
     icon: [
       {

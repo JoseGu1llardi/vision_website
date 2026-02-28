@@ -27,6 +27,7 @@ export function useContactForm() {
     try {
       const params = new URLSearchParams();
       params.append("form-name", "contact");
+      params.append("bot-field", ""); // honeypot — must be empty for Netlify to accept the submission
 
       Object.entries(data).forEach(([key, value]) => {
         params.append(key, Array.isArray(value) ? value.join(", ") : (value ?? ""));
