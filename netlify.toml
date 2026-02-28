@@ -1,0 +1,37 @@
+# =====================================================
+# BUILD
+# =====================================================
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# =====================================================
+# SECURITY HEADERS
+# =====================================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevent the site from being embedded in iframes (clickjacking)
+    X-Frame-Options = "DENY"
+
+    # Stop browsers from MIME-sniffing the declared content type
+    X-Content-Type-Options = "nosniff"
+
+    # Only send origin as referrer on cross-origin requests
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Disable browser features not used by this site
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # Force HTTPS for 2 years once live on a real domain
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+    # Content Security Policy:
+    #   script-src  — 'unsafe-inline' required by Next.js static hydration;
+    #                 va.vercel-scripts.com serves the analytics script
+    #   img-src     — images.unsplash.com for hero images (mock, replace when real assets land)
+    #   connect-src — vitals.vercel-insights.com receives analytics beacons
+    #   frame-ancestors 'none' — stricter than X-Frame-Options, prevents all embedding
+    #   form-action 'self'     — forms may only POST to the same origin
+    #   base-uri 'self'        — blocks <base> tag injection attacks
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' images.unsplash.com data: blob:; font-src 'self'; connect-src 'self' vitals.vercel-insights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
