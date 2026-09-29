@@ -27,11 +27,26 @@
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
     # Content Security Policy:
-    #   script-src  — 'unsafe-inline' required by Next.js static hydration;
-    #                 va.vercel-scripts.com serves the analytics script
-    #   img-src     — images.unsplash.com for hero images (mock, replace when real assets land)
-    #   connect-src — vitals.vercel-insights.com receives analytics beacons
+    #   script-src  — 'unsafe-inline' required by Next.js static hydration
+    #   img-src     — all images are self-hosted in /public
     #   frame-ancestors 'none' — stricter than X-Frame-Options, prevents all embedding
     #   form-action 'self'     — forms may only POST to the same origin
     #   base-uri 'self'        — blocks <base> tag injection attacks
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' images.unsplash.com data: blob:; font-src 'self'; connect-src 'self' vitals.vercel-insights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+
+# =====================================================
+# CACHING
+# =====================================================
+# Next.js build assets (JS, CSS, fonts) have a content hash in the filename,
+# so a new deploy always gets new URLs — safe to cache forever
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Optimized images keep the same filename when regenerated, so cache for a day
+# and serve the cached copy while revalidating for up to a week after that
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

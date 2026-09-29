@@ -1,0 +1,16 @@
+<!-- Temporary favicon (VL monogram) — replace with the client's logo when available -->
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="30" fill="#237c20" />
+  <text
+    x="31"
+    y="41"
+    text-anchor="middle"
+    font-size="33"
+    font-weight="700"
+    fill="white"
+    font-family="Georgia, 'Times New Roman', serif"
+    letter-spacing="2"
+  >
+    VL
+  </text>
+</svg>
