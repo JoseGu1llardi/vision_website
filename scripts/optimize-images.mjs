@@ -20,16 +20,17 @@ const JOBS = [
   ...["gd1", "gd2", "gd3", "gd4", "gd5", "gd6"].map((name) => ({
     source: `${name}.jpg`,
     outputs: [
-      { name: `gallery/${name}-800.webp`, width: 800 }, // grid thumbnail
+      // Grid thumbnail: square tiles crop the 3:2 photo, so a ~370px tile
+      // needs ~560 CSS px of width — 1200px keeps it sharp on 2x screens
+      { name: `gallery/${name}-1200.webp`, width: 1200 },
       { name: `gallery/${name}-2000.webp`, width: 2000 }, // modal / full view
     ],
   })),
   {
     source: "Contemporary landscape.avif",
-    outputs: [
-      { name: "hero/hero-828.webp", width: 828 }, // phones
-      { name: "hero/hero-1920.webp", width: 1920 }, // tablets and desktops
-    ],
+    // Single size: on portrait phones the full-height crop scales the photo
+    // wider than the screen, so phones need the largest version too
+    outputs: [{ name: "hero/hero.webp", width: 1920 }],
   },
 ];
 
