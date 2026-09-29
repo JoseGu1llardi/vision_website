@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
 import { NAV_LINKS } from "./constants";
 import type { Page } from "../../types";
@@ -38,15 +37,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between">
-          <div className="w-8 h-8">
-            <Image
-              src="/ar-logo.svg"
-              alt="AR Design Logo"
-              className="w-full h-full"
-              width={100}
-              height={50}
-            />
-          </div>
+          {/* Spacer matching the menu button width to keep the title centered */}
+          <div className="w-10" aria-hidden="true" />
 
           <div className="text-center flex-1">
             <h1 className="text-base tracking-[0.3em] font-light text-black">
@@ -104,13 +96,6 @@ function DesktopHeader({ scrolled, currentPage, onNavigate }: DesktopHeaderProps
         }`}
       >
         <div className="flex flex-col items-center">
-          <Image
-            src="/ar-logo.svg"
-            alt="AR Design Logo"
-            className="w-12 h-12 mb-4"
-            width={100}
-            height={50}
-          />
           <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-2">
             VISION LANDSCAPES
           </h1>
@@ -140,14 +125,7 @@ function DesktopHeader({ scrolled, currentPage, onNavigate }: DesktopHeaderProps
           scrolled ? "block" : "hidden"
         }`}
       >
-        <div className="flex items-center justify-between">
-          <Image
-            src="/ar-logo.svg"
-            alt="AR Design Logo"
-            className="w-10 h-10"
-            width={100}
-            height={50}
-          />
+        <div className="flex items-center justify-end">
           <div className="absolute left-1/2 -translate-x-1/2">
             <h1 className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
               VISION LANDSCAPES
