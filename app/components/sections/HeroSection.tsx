@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { heroImage } from "../../data/heroImages";
 import type { Page } from "../../types";
 
@@ -13,12 +12,16 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
     <div className="min-h-screen relative pt-20 md:pt-24">
       {/* Hero Background */}
       <section className="relative h-screen -mt-20 md:-mt-24">
-        <Image
-          src={heroImage.url}
+        {/* Plain <img>: with `images.unoptimized` next/image cannot emit a srcset,
+            and this lets phones download the smaller file */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={heroImage.src}
+          srcSet={heroImage.srcSet}
+          sizes="100vw"
           alt={heroImage.alt}
-          className="w-full h-full object-cover"
-          fill
-          priority
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </section>
 

@@ -3,14 +3,15 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ImageModal } from "../ui/ImageModal";
+import type { GalleryPhoto } from "../../data/galleryImages";
 
 interface GalleryCarouselProps {
-  images: string[];
+  images: GalleryPhoto[];
 }
 
 export function GalleryCarousel({ images }: GalleryCarouselProps) {
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryPhoto | null>(null);
   const [itemsPerSlide, setItemsPerSlide] = useState(3); // SSR-safe default
 
   // Detect viewport width on the client only to avoid SSR mismatch
@@ -60,7 +61,6 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
                 <GalleryImage
                   key={galleryIndex + index}
                   image={image}
-                  index={galleryIndex + index}
                   onClick={() => setSelectedImage(image)}
                 />
               ))}
@@ -98,7 +98,8 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
 
       {selectedImage && (
         <ImageModal
-          image={selectedImage}
+          image={selectedImage.full}
+          alt={selectedImage.alt}
           onClose={() => setSelectedImage(null)}
         />
       )}
@@ -108,11 +109,9 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
 
 function GalleryImage({
   image,
-  index,
   onClick,
 }: {
-  image: string;
-  index: number;
+  image: GalleryPhoto;
   onClick: () => void;
 }) {
   return (
@@ -124,8 +123,8 @@ function GalleryImage({
       className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
     >
       <Image
-        src={image || "/placeholder.svg"}
-        alt={`Project ${index + 1}`}
+        src={image.thumb}
+        alt={image.alt}
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         fill
       />
