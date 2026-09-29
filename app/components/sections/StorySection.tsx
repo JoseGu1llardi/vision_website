@@ -13,14 +13,11 @@ export function StorySection({ onNavigate }: StorySectionProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <span className="text-sm tracking-[0.3em] text-foreground/60 font-medium uppercase">
+            <h2 className="text-2xl md:text-3xl tracking-[0.3em] text-foreground/80 font-light uppercase">
               Our Story
-            </span>
-            <div className="h-px bg-foreground/20 mt-2 w-16 mx-auto" />
+            </h2>
+            <div className="h-px bg-foreground/20 mt-3 w-24 mx-auto" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Welcome to Vision Landscapes
-          </h2>
         </div>
 
         {/* Content */}
@@ -36,14 +33,10 @@ export function StorySection({ onNavigate }: StorySectionProps) {
           </p>
 
           <p>
-            Today, as{" "}
-            <span className="font-semibold text-foreground">
-              Vision Landscapes Limited
-            </span>
-            , we have proudly evolved into a full-service partner for your most
-            ambitious outdoor projects. We now combine our deep horticultural
-            knowledge with expert craftsmanship in high-end landscape
-            construction.
+            Today, we have proudly evolved into a full-service partner for your
+            most ambitious outdoor projects. We now combine our deep
+            horticultural knowledge with expert craftsmanship in high-end
+            landscape construction.
           </p>
 
           <p>
@@ -51,11 +44,6 @@ export function StorySection({ onNavigate }: StorySectionProps) {
             sophisticated water features and complete property transformations,
             we bring the same precision and care to building your dream
             landscape as we always have to maintaining it.
-          </p>
-
-          <p className="text-xl font-medium text-foreground pt-4 border-t border-foreground/10">
-            We are your single source to imagine, create, and sustain an
-            extraordinary outdoor environment.
           </p>
         </div>
 
