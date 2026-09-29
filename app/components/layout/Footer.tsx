@@ -21,7 +21,7 @@ export function Footer() {
             aria-label="Scroll to top"
           >
             <h2 className="text-xl tracking-[0.3em] text-foreground/80 group-hover:text-[#237c20] font-light transition-colors">
-              VISION LANDSCAPE
+              VISION LANDSCAPES
             </h2>
             <p className="text-[10px] tracking-[0.25em] text-foreground/60 font-light mt-1">
               LIMITED
@@ -80,7 +80,7 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="text-xs text-foreground/50 pt-3 border-t border-foreground/10 w-full max-w-md">
-            © {CURRENT_YEAR} Vision Landscape Limited. All rights reserved.
+            © {CURRENT_YEAR} Vision Landscapes Limited. All rights reserved.
           </div>
         </div>
       </div>
