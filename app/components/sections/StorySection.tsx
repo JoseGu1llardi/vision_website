@@ -25,25 +25,41 @@ export function StorySection({ onNavigate }: StorySectionProps) {
           <p>
             We began as{" "}
             <span className="font-semibold text-foreground">
-              Vision Landscapes Solutions
+              Vision Landscape Solutions
             </span>{" "}
-            with a dedicated focus on meticulous maintenance, nurturing and
-            preserving the beauty of outdoor spaces. That core commitment to
-            excellence remains the foundation of everything we do.
+            with a dedicated focus on meticulous garden maintenance, nurturing
+            and preserving the beauty of outdoor spaces. That commitment to
+            quality, care and attention to detail remains at the heart of
+            everything we do today.
           </p>
 
           <p>
-            Today, we have proudly evolved into a full-service partner for your
-            most ambitious outdoor projects. We now combine our deep
-            horticultural knowledge with expert craftsmanship in high-end
+            Today, Vision Landscapes has evolved into a full-service landscape
+            construction company, delivering ambitious outdoor projects from
+            concept through to completion. We combine our deep horticultural
+            knowledge with skilled craftsmanship and years of experience in
             landscape construction.
           </p>
 
           <p>
-            From custom stonework and elegant outdoor living areas to
-            sophisticated water features and complete property transformations,
-            we bring the same precision and care to building your dream
-            landscape as we always have to maintaining it.
+            From bespoke natural stone and porcelain paving, retaining walls and
+            structural landscaping, to outdoor kitchens, entertaining spaces,
+            pergolas and architectural water features, every element is
+            carefully considered and expertly built.
+          </p>
+
+          <p>
+            We also undertake complete garden transformations, driveways, mature
+            planting, garden lighting and large-scale landscape construction,
+            creating outdoor spaces that are designed around the property and
+            the way our clients want to live.
+          </p>
+
+          <p>
+            From a single beautifully crafted feature to a complete landscape
+            transformation, we bring the same precision, care and attention to
+            detail to every project — building exceptional outdoor spaces that
+            are made to last.
           </p>
         </div>
 

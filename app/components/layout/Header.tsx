@@ -42,7 +42,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
           <div className="text-center flex-1">
             <h1 className="text-base tracking-[0.3em] font-light text-black">
-              VISION LANDSCAPE
+              VISION LANDSCAPES
             </h1>
           </div>
 
@@ -86,7 +86,11 @@ interface DesktopHeaderProps {
   onNavigate: (page: Page) => void;
 }
 
-function DesktopHeader({ scrolled, currentPage, onNavigate }: DesktopHeaderProps) {
+function DesktopHeader({
+  scrolled,
+  currentPage,
+  onNavigate,
+}: DesktopHeaderProps) {
   return (
     <div className="hidden md:block">
       {/* Unscrolled State */}
