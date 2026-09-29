@@ -10,9 +10,9 @@ interface HeroSectionProps {
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
-    <div className="min-h-screen relative pt-20 md:pt-24">
-      {/* Hero Background */}
-      <section className="relative h-screen -mt-20 md:-mt-24">
+    <div className="min-h-svh relative pt-20 md:pt-24">
+      {/* Hero Background — svh avoids the jump when the mobile browser bar hides */}
+      <section className="relative h-svh -mt-20 md:-mt-24">
         <Image
           src={heroImage.src}
           alt={heroImage.alt}

@@ -6,8 +6,9 @@ import "./globals.css";
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AR Design – Award Winning Landscape Designers",
-  description: "Professional landscape design studio based in Dublin, Ireland",
+  title: "Vision Landscapes – Landscape Construction in Dublin",
+  description:
+    "Landscape construction and garden transformations in Dublin, Ireland — paving, outdoor kitchens, pergolas, driveways and more, from concept to completion.",
 };
 
 export default function RootLayout({
