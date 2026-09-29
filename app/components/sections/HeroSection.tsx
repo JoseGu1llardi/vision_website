@@ -1,14 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import { heroImage } from "../../data/heroImages";
-import type { Page } from "../../types";
 
-interface HeroSectionProps {
-  onNavigate: (page: Page) => void;
-}
-
-export function HeroSection({ onNavigate }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <div className="min-h-svh relative pt-20 md:pt-24">
       {/* Hero Background — svh avoids the jump when the mobile browser bar hides */}

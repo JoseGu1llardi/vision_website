@@ -1,34 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import { Header } from "./components/layout/Header";
-import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./components/pages/HomePage";
-import { PortfolioPage } from "./components/pages/PortfolioPage";
-import { ContactPage } from "./components/pages/ContactPage";
-import type { Page } from "./types";
 
-export default function MainPage() {
-  const [currentPage, setCurrentPage] = useState<Page>("home");
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <HomePage onNavigate={setCurrentPage} />;
-      case "portfolio":
-        return <PortfolioPage />;
-      case "contact":
-        return <ContactPage />;
-      default:
-        return <HomePage onNavigate={setCurrentPage} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen">
-      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="transition-opacity duration-300">{renderPage()}</main>
-      <Footer />
-    </div>
-  );
+export default function Page() {
+  return <HomePage />;
 }

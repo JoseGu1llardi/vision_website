@@ -1,16 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MobileMenu } from "./MobileMenu";
 import { NAV_LINKS } from "./constants";
-import type { Page } from "../../types";
 
-interface HeaderProps {
-  currentPage: Page;
-  onNavigate: (page: Page) => void;
-}
-
-export function Header({ currentPage, onNavigate }: HeaderProps) {
+export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,20 +17,13 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavigation = (page: Page) => {
-    onNavigate(page);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // Next.js scrolls to the top on route changes; only the mobile menu needs closing
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 py-3">
       <div className="container mx-auto px-6 lg:px-12">
-        <DesktopHeader
-          scrolled={scrolled}
-          currentPage={currentPage}
-          onNavigate={handleNavigation}
-        />
+        <DesktopHeader scrolled={scrolled} pathname={pathname} />
 
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between">
@@ -72,8 +62,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
         <MobileMenu
           isOpen={mobileMenuOpen}
-          currentPage={currentPage}
-          onNavigate={handleNavigation}
+          pathname={pathname}
+          onNavigate={closeMobileMenu}
         />
       </div>
     </header>
@@ -82,15 +72,10 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
 interface DesktopHeaderProps {
   scrolled: boolean;
-  currentPage: Page;
-  onNavigate: (page: Page) => void;
+  pathname: string;
 }
 
-function DesktopHeader({
-  scrolled,
-  currentPage,
-  onNavigate,
-}: DesktopHeaderProps) {
+function DesktopHeader({ scrolled, pathname }: DesktopHeaderProps) {
   return (
     <div className="hidden md:block">
       {/* Unscrolled State */}
@@ -113,10 +98,10 @@ function DesktopHeader({
           <nav className="flex items-center gap-12">
             {NAV_LINKS.map((link) => (
               <NavLink
-                key={link.page}
+                key={link.href}
+                href={link.href}
                 label={link.label}
-                active={currentPage === link.page}
-                onClick={() => onNavigate(link.page)}
+                active={pathname === link.href}
               />
             ))}
           </nav>
@@ -138,10 +123,10 @@ function DesktopHeader({
           <nav className="flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <NavLink
-                key={link.page}
+                key={link.href}
+                href={link.href}
                 label={link.label}
-                active={currentPage === link.page}
-                onClick={() => onNavigate(link.page)}
+                active={pathname === link.href}
               />
             ))}
           </nav>
@@ -152,15 +137,16 @@ function DesktopHeader({
 }
 
 interface NavLinkProps {
+  href: string;
   label: string;
   active?: boolean;
-  onClick: () => void;
 }
 
-function NavLink({ label, active, onClick }: NavLinkProps) {
+function NavLink({ href, label, active }: NavLinkProps) {
   return (
-    <button
-      onClick={onClick}
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
       className="text-sm tracking-wider text-foreground/70 hover:text-foreground transition-colors relative group"
     >
       {label}
@@ -169,6 +155,6 @@ function NavLink({ label, active, onClick }: NavLinkProps) {
           active ? "w-full" : "w-0 group-hover:w-full"
         }`}
       />
-    </button>
+    </Link>
   );
 }

@@ -1,12 +1,6 @@
-"use client";
+import Link from "next/link";
 
-import type { Page } from "../../types";
-
-interface StorySectionProps {
-  onNavigate: (page: Page) => void;
-}
-
-export function StorySection({ onNavigate }: StorySectionProps) {
+export function StorySection() {
   return (
     <section className="relative bg-background py-20 px-4">
       <div className="container mx-auto max-w-4xl">
@@ -65,18 +59,18 @@ export function StorySection({ onNavigate }: StorySectionProps) {
 
         {/* Call to Action */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
-          <button
-            onClick={() => onNavigate("portfolio")}
+          <Link
+            href="/portfolio"
             className="px-8 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300 font-medium tracking-wide hover:shadow-lg"
           >
             View Our Work
-          </button>
-          <button
-            onClick={() => onNavigate("contact")}
+          </Link>
+          <Link
+            href="/contact"
             className="px-8 py-3 bg-transparent border-2 border-foreground/20 text-foreground rounded-lg hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 font-medium tracking-wide"
           >
             Start Your Project
-          </button>
+          </Link>
         </div>
       </div>
     </section>
