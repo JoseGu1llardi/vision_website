@@ -33,11 +33,17 @@ export function useContactForm() {
         params.append(key, Array.isArray(value) ? value.join(", ") : (value ?? ""));
       });
 
-      await fetch("/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
       });
+
+      // fetch only rejects on network failure — a rejected submission
+      // (e.g. 404 when Netlify hasn't detected the form) must be caught here
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
 
       form.reset();
       setShowModal(true);
