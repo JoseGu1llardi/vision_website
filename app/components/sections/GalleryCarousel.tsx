@@ -51,9 +51,9 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
     <>
       <section className="py-16 px-4 bg-foreground/5">
         <div className="container mx-auto max-w-6xl">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-12">
+          <h1 className="text-2xl md:text-3xl font-bold text-center mb-12">
             Recent Projects
-          </h3>
+          </h1>
 
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

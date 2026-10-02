@@ -31,9 +31,9 @@ export function Header() {
           <div className="w-10" aria-hidden="true" />
 
           <div className="text-center flex-1">
-            <h1 className="text-base tracking-[0.3em] font-light text-black">
+            <p className="text-base tracking-[0.3em] font-light text-black">
               VISION LANDSCAPES
-            </h1>
+            </p>
           </div>
 
           <button
@@ -85,9 +85,9 @@ function DesktopHeader({ scrolled, pathname }: DesktopHeaderProps) {
         }`}
       >
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl tracking-[0.3em] font-light text-black mb-2">
+          <p className="text-2xl tracking-[0.3em] font-light text-black mb-2">
             VISION LANDSCAPES
-          </h1>
+          </p>
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-foreground/30"></div>
             <p className="text-xs tracking-[0.3em] text-black/90 font-light">
@@ -116,9 +116,9 @@ function DesktopHeader({ scrolled, pathname }: DesktopHeaderProps) {
       >
         <div className="flex items-center justify-end">
           <div className="absolute left-1/2 -translate-x-1/2">
-            <h1 className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
+            <p className="text-lg tracking-[0.3em] font-light text-black whitespace-nowrap">
               VISION LANDSCAPES
-            </h1>
+            </p>
           </div>
           <nav className="flex items-center gap-8">
             {NAV_LINKS.map((link) => (

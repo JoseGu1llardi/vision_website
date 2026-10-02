@@ -29,7 +29,7 @@ export function FormSection() {
             </span>
             <div className="h-px bg-foreground/20 mt-2 w-16 mx-auto" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h2>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
         </div>
 
         <div className="max-w-5xl mx-auto">

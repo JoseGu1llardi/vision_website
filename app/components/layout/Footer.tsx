@@ -20,12 +20,12 @@ export function Footer() {
             className="group cursor-pointer transition-all duration-300"
             aria-label="Scroll to top"
           >
-            <h2 className="text-xl tracking-[0.3em] text-foreground/80 group-hover:text-[#237c20] font-light transition-colors">
+            <span className="block text-xl tracking-[0.3em] text-foreground/80 group-hover:text-[#237c20] font-light transition-colors">
               VISION LANDSCAPES
-            </h2>
-            <p className="text-[10px] tracking-[0.25em] text-foreground/60 font-light mt-1">
+            </span>
+            <span className="block text-[10px] tracking-[0.25em] text-foreground/60 font-light mt-1">
               LIMITED
-            </p>
+            </span>
           </button>
 
           {/* Social Media Links */}
