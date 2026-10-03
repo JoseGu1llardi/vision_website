@@ -9,7 +9,7 @@ export function useContactForm() {
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const form = useForm<ContactFormValues, any, ContactFormValues>({
+  const form = useForm<ContactFormValues, unknown, ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",

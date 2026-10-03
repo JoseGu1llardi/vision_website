@@ -122,7 +122,7 @@ export function FormSection() {
                 <div className="flex justify-between items-center mt-2">
                   <p className="text-xs text-foreground/50">
                     Design - We do not do in-house Landscape design, but we will
-                    put you in touch with are Landscape partners.
+                    put you in touch with our Landscape partners.
                   </p>
                   <p
                     className={`text-xs shrink-0 ml-4 ${
