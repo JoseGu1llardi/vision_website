@@ -34,19 +34,10 @@ export function FormSection() {
 
         <div className="max-w-5xl mx-auto">
           <div className="bg-foreground/2 rounded-lg p-10 md:p-12 border border-foreground/10">
-            <form
-              onSubmit={onSubmit}
-              className="space-y-8"
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <div style={{ display: "none" }}>
-                <input name="bot-field" />
-              </div>
-
+            {/* Netlify detects this form via public/form-detection.html —
+                don't add data-netlify here, or its field list (without
+                the unnamed service checkboxes) overrides that one */}
+            <form onSubmit={onSubmit} className="space-y-8">
               <FormField
                 label="Name"
                 htmlFor="name"
