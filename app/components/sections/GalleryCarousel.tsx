@@ -5,6 +5,13 @@ import Image from "next/image";
 import { ImageModal } from "../ui/ImageModal";
 import type { GalleryPhoto } from "../../data/galleryImages";
 
+// Full class names so Tailwind picks them up
+const FOCUS_CLASSES: Record<GalleryPhoto["focus"], string> = {
+  top: "object-top",
+  center: "object-center",
+  bottom: "object-bottom",
+};
+
 interface GalleryCarouselProps {
   images: GalleryPhoto[];
 }
@@ -125,7 +132,7 @@ function GalleryImage({
       <Image
         src={image.thumb}
         alt={image.alt}
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        className={`w-full h-full object-cover ${FOCUS_CLASSES[image.focus]} group-hover:scale-110 transition-transform duration-500`}
         fill
       />
       <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">

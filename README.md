@@ -122,9 +122,13 @@ npm run lint
 
 ### Adding or replacing photos
 
-1. Put the original photo in `images-src/`
-2. Run `npm run optimize-images` to generate the WebP files in `public/images/`
-3. Reference the new files in `app/data/`
+1. Put the original photo in `images-src/gallery/`, with a descriptive file name (e.g. `resin-driveway-front-garden.jpg`)
+2. Run `npm run optimize-images` to generate the WebP files in `public/images/gallery/`
+3. Add an entry to `app/data/galleryImages.ts` with its alt text, service and, for portrait photos, the crop `focus`
+
+To replace a photo with a higher-resolution version, overwrite the file in `images-src/` with the same name and run step 2 again.
+
+The homepage hero is generated from `images-src/hero.jpg`.
 
 ---
 
