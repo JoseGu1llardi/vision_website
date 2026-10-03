@@ -19,26 +19,32 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-linear-to-b from-foreground/20 via-transparent to-foreground/40 pointer-events-none" />
 
       {/* Central Content: equal top/bottom rows keep the heading at the exact
-          vertical center; the tagline is centered between the heading and the bottom */}
-      <div className="absolute inset-0 grid grid-rows-[1fr_auto_1fr] text-center px-4 pointer-events-none animate-in fade-in duration-1000">
+          vertical center; the tagline sits at the bottom, level with the brand badge */}
+      <div className="absolute inset-0 grid grid-rows-[1fr_auto_1fr] text-center px-4 pointer-events-none">
         {/* Main Heading */}
-        <div className="row-start-2 space-y-3 animate-in slide-in-from-bottom-4 duration-700 delay-300">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em] text-white drop-shadow-lg"
-            style={{
-              textShadow:
-                "0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.8)",
-            }}
-          >
-            VISION LANDSCAPES
-          </h1>
-          <div className="h-px w-32 bg-white/60 mx-auto" />
+        <div className="row-start-2">
+          {/* Glass panel: translucent fill, thin light border and a top highlight */}
+          <div className="inline-block px-6 py-3 rounded-2xl bg-white/10 border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_8px_32px_rgba(0,0,0,0.25)] animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 fill-mode-backwards">
+            <div className="space-y-3">
+              <h1
+                className="text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em] text-white drop-shadow-lg"
+                style={{
+                  textShadow:
+                    "0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.8)",
+                }}
+              >
+                VISION LANDSCAPES
+              </h1>
+              <div className="h-px w-32 bg-white/60 mx-auto" />
+            </div>
+          </div>
         </div>
 
         {/* Tagline */}
-        <div className="row-start-3 flex items-center justify-center pb-24 md:pb-32">
+        {/* bottom-8 + h-12 match the brand badge, so both share a center line */}
+        <div className="absolute inset-x-4 bottom-8 h-12 flex items-center justify-center">
           <p
-            className="text-lg md:text-xl lg:text-2xl text-white/90 font-light tracking-wide max-w-2xl animate-in slide-in-from-bottom-4 duration-700 delay-500 drop-shadow-md"
+            className="text-lg md:text-xl lg:text-2xl text-white/90 font-light tracking-wide max-w-2xl drop-shadow-md animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-backwards"
             style={{
               textShadow:
                 "0 0 15px rgba(0,0,0,0.5), 1px 1px 2px rgba(0,0,0,0.7)",

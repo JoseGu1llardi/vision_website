@@ -126,9 +126,11 @@ npm run lint
 2. Run `npm run optimize-images` to generate the WebP files in `public/images/gallery/`
 3. Add an entry to `app/data/galleryImages.ts` with its alt text, service and, for portrait photos, the crop `focus`
 
-To replace a photo with a higher-resolution version, overwrite the file in `images-src/` with the same name and run step 2 again.
+To replace a photo with a higher-resolution version of the same shot, overwrite the file in `images-src/` with the same name and run step 2 again.
 
-The homepage hero is generated from `images-src/hero.jpg`.
+The homepage hero is generated from the photo in `images-src/hero/` and referenced in `app/data/heroImages.ts`.
+
+When changing a photo for a different one, give it a **new file name**. Browsers cache images, and a file with the same name may keep showing the old photo.
 
 ---
 

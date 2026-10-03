@@ -44,9 +44,10 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Optimized images keep the same filename when regenerated, so cache for a day
-# and serve the cached copy while revalidating for up to a week after that
+# Images have no content hash in their filename, so a replaced photo keeps its
+# URL. Browsers revalidate on every visit instead (a fast 304 via Netlify's ETag
+# when unchanged), so a new photo shows up right after deploy
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
